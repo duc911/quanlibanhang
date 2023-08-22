@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+
+<head>
+</head>
+
+<body>
+	<div th:fragment="menu" class="col-lg-3 my-4">
+		<div class="card mb-4"
+			style="box-shadow: 0 1px 2px lightgray; background-color: #d09683; border: 1px;">
+			<p class="card-header text-center"
+				style="font-size: 24px; font-weight: 500; color: white;">Danh
+				mục</p>
+			<div class="list-group list-group-flush">
+				<a class="list-group-item"
+					th:href="@{'/home/brand/'+${item.categoryId}}"
+					th:each="item : ${categories}"
+					th:id="${item.categoryId==brand?'brand':''}"
+					>Sản phẩm
+					[[${item.name}]]</a>
+			</div>
+		</div>
+		<div>
+			<label for="" class="ml-1">Tìm kiếm:</label>
+			<form th:action="@{/home/search}" method="post">
+				<div class="input-group">
+					<input type="text" class="form-control" placeholder="Tên sản phẩm" name="name" th:value="${name}"
+						aria-label="Recipient's username" aria-describedby="basic-addon2">
+					<div class="input-group-append">
+						<button style="font-size: 13px;" class="btn btn-outline-secondary">
+							<span class="fa fa-search"></span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		
+
+	</div>
+</body>
+
+</html>
